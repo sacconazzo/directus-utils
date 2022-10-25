@@ -1,6 +1,10 @@
 {
   "name": "directus-x",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "files": [
+    "scripts/index.js"
+  ],
+  "main": "scripts/index.js",
   "description": "directus utilities commands",
   "scripts": {
     "migrate": "node ./scripts/index.js migrate"
