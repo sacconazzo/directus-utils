@@ -1,0 +1,25 @@
+{
+  "name": "directus-utils",
+  "version": "1.0.0",
+  "description": "directus utilities commands",
+  "scripts": {
+    "migrate": "node ./scripts/index.js migrate"
+  },
+  "keywords": [
+    "directus",
+    "utilities",
+    "migrations",
+    "roles",
+    "permissions",
+    "commands",
+    "cli"
+  ],
+  "author": "sacconazzo",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^9.4.1",
+    "dotenv": "^16.0.3",
+    "find-root": "^1.1.0",
+    "knex": "^2.3.0"
+  }
+}
