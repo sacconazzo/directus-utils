@@ -1,9 +1,7 @@
 {
   "name": "directus-x",
-  "version": "1.0.1",
-  "files": [
-    "scripts/index.js"
-  ],
+  "version": "1.0.6",
+  "bin": "scripts/index.js",
   "main": "scripts/index.js",
   "description": "directus utilities commands",
   "scripts": {
