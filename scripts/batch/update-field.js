@@ -16,7 +16,7 @@ module.exports = async (table, field, condition, data) => {
 
     console.log(`Table '${table}' updated with ${n} records`)
 
-    console.warn('Remember to generate a new snapshot')
+    console.warn('\nPlease remember to generate a new snapshot if needed!')
   } catch (err) {
     console.error(err.message)
   } finally {

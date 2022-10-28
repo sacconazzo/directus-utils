@@ -3,6 +3,7 @@ const upd = require(`./update-field`)
 const entities = {
   fields: 'directus_fields',
   folders: 'directus_folders',
+  permissions: 'directus_permissions',
 }
 
 module.exports = {

@@ -6,7 +6,7 @@ Utilities scripts for Directus projects:
   - roles
   - permissions
   - translations
-- ...
+- Batch updates (set common values on Directus tables)
 
 ## Prerequisites
 
@@ -35,3 +35,7 @@ Example to create a migration for a specific role (XXX)
 Example to create a migration for translations settings
 
     npx directus-x migrate --translations
+
+Example to update WYSIWYG options for all project fields
+
+    npx directus-x batch fields-options -k "interface = 'input-rich-text-html'" -d '{"toolbar": ["bold", "bullist", "italic", "numlist", "underline"]}'
