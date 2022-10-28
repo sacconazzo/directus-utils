@@ -20,7 +20,7 @@ program
   .command('batch')
   .description('Set automatic configurations or data to Directus tables')
   .argument('<entity>', 'Name of Directus entity-column to update (ex.: fields-options, files-folder, ..)')
-  .option('-k, --key <condition>', "Where condition of updating (ex.: 'interface=input-rich-text-html')")
+  .option('-k, --key <condition>|all', 'Where condition of updating (ex.: "interface=\'input-rich-text-html\'")')
   .option(
     '-d, --data <data>',
     'Field content to be filled in batch (ex.: \'{"folder": null, "toolbar": ["blockquote", "bold", "bullist", "customImage", "fullscreen", "h1", "h2", "h3", "italic", "numlist", "underline"]}\')'

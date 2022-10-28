@@ -24,5 +24,8 @@
     "dotenv": "^16.0.3",
     "find-root": "^1.1.0",
     "knex": "^2.3.0"
+  },
+  "devDependencies": {
+    "mysql": "^2.18.1"
   }
 }
