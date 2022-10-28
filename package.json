@@ -1,12 +1,12 @@
 {
   "name": "directus-x",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": "https://github.com/sacconazzo/directus-utils.git",
   "bin": "scripts/index.js",
   "main": "scripts/index.js",
   "description": "directus utilities commands",
   "scripts": {
-    "migrate": "node ./scripts/index.js migrate"
+    "directus-x": "node ./scripts/index.js"
   },
   "keywords": [
     "directus",
