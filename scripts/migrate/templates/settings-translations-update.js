@@ -5,9 +5,9 @@ const settings = {
 
 module.exports = {
   async up(knex) {
-    const [setSettings] = await knex('directus_settings').select().where('id', 1)
+    const setSettings = await knex('directus_settings').select().first()
     return setSettings
-      ? knex('directus_settings').update(settings).where('id', 1)
+      ? knex('directus_settings').update(settings).where('id', setSettings.id)
       : knex('directus_settings').insert(settings)
   },
 

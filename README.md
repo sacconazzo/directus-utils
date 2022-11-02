@@ -32,7 +32,7 @@ Example to create a migration for a specific role (XXX)
 
     npx directus-x migrate -r XXX
 
-Example to create a migration for translations settings
+Example to create a migration for translations strings
 
     npx directus-x migrate --translations
 
