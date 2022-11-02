@@ -1,5 +1,5 @@
 const settings = {
-  translation_strings: '$$$$',
+  translation_strings: '$$$$' || null,
   default_language: '%%%%',
 }
 
