@@ -1,6 +1,6 @@
 {
   "name": "directus-x",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "repository": "https://github.com/sacconazzo/directus-utils.git",
   "bin": "scripts/index.js",
   "main": "scripts/index.js",
@@ -19,11 +19,13 @@
   ],
   "author": "sacconazzo",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "commander": "^9.4.1",
     "dotenv": "^16.0.3",
     "find-root": "^1.1.0",
-    "knex": "^2.3.0",
+    "knex": "^2.3.0"
+  },
+  "devDependencies": {
     "mysql": "^2.18.1"
   }
 }
