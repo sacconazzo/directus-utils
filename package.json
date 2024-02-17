@@ -17,8 +17,8 @@
     "commands",
     "cli"
   ],
-  "author": "sacconazzo",
-  "license": "ISC",
+  "author": "Giona Righini (giona.tech)",
+  "license": "MIT",
   "devDependencies": {
     "commander": "^9.4.1",
     "dotenv": "^16.0.3",
