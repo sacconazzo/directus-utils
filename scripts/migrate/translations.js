@@ -4,7 +4,7 @@ const cwd = process.cwd()
 const Knex = require('knex')
 const { getMigrationKey } = require('./index')
 
-const { db: dbConfig } = require('../config')
+const { db: dbConfig, options } = require('../config')
 
 module.exports = async () => {
   let knex
@@ -13,7 +13,10 @@ module.exports = async () => {
 
     const [settingsContent] = await knex('directus_settings').select().where({ id: 1 })
 
-    const tamplateContent = fs.readFileSync(`${root}/scripts/migrate/templates/settings-translations-update.js`, 'utf8')
+    const tamplateContent = fs.readFileSync(
+      `${root}/scripts/migrate/templates/settings-translations-update${options.module ? '-es' : ''}.js`,
+      'utf8',
+    )
 
     const migrationContent = tamplateContent
       .replace('$$$$', settingsContent.translation_strings || '')
