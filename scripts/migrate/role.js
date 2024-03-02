@@ -4,9 +4,9 @@ const cwd = process.cwd()
 const Knex = require('knex')
 const { getMigrationKey } = require('./index')
 
-const { db: dbConfig } = require('../config')
+const { db: dbConfig, options } = require('../config')
 
-module.exports = async (role) => {
+module.exports = async role => {
   let knex
   try {
     knex = Knex(dbConfig)
@@ -17,7 +17,10 @@ module.exports = async (role) => {
       const [roleContent] = await knex('directus_roles').select().where({ id: role })
       if (!roleContent) throw new Error('Ruolo non valido')
 
-      const tamplateContent = fs.readFileSync(`${root}/scripts/migrate/templates/role-update.js`, 'utf8')
+      const tamplateContent = fs.readFileSync(
+        `${root}/scripts/migrate/templates/role-update${options.module ? '-es' : ''}.js`,
+        'utf8',
+      )
 
       const migrationContent = tamplateContent.replaceAll('$$$$', role).replace('%%%%', JSON.stringify(roleContent))
 
@@ -28,13 +31,16 @@ module.exports = async (role) => {
     }
 
     const permissionContent = await knex('directus_permissions').select().where({ role })
-    permissionContent.forEach((p) => {
+    permissionContent.forEach(p => {
       p.permissions = JSON.parse(p.permissions)
       p.validation = JSON.parse(p.validation)
       p.presets = JSON.parse(p.presets)
     })
 
-    const tamplatePContent = fs.readFileSync(`${root}/scripts/migrate/templates/permissions-update.js`, 'utf8')
+    const tamplatePContent = fs.readFileSync(
+      `${root}/scripts/migrate/templates/permissions-update${options.module ? '-es' : ''}.js`,
+      'utf8',
+    )
 
     const migrationPContent = tamplatePContent.replace('$$$$', role).replace('%%%%', JSON.stringify(permissionContent))
 

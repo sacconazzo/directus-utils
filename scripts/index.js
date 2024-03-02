@@ -7,7 +7,7 @@ const program = new Command()
 const { migrate } = require('./migrate')
 const { batch } = require('./batch')
 
-program.name('string-util').description('Directus utilities').version('1.0.0')
+program.name('string-util').description('Directus utilities').version('1.2.0')
 
 program
   .command('migrate')
@@ -23,7 +23,7 @@ program
   .option('-k, --key <condition>|all', 'Where condition of updating (ex.: "interface=\'input-rich-text-html\'")')
   .option(
     '-d, --data <data>',
-    'Field content to be filled in batch (ex.: \'{"folder": null, "toolbar": ["blockquote", "bold", "bullist", "customImage", "fullscreen", "h1", "h2", "h3", "italic", "numlist", "underline"]}\')'
+    'Field content to be filled in batch (ex.: \'{"folder": null, "toolbar": ["blockquote", "bold", "bullist", "customImage", "fullscreen", "h1", "h2", "h3", "italic", "numlist", "underline"]}\')',
   )
   .action(batch)
 
