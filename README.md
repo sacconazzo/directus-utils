@@ -59,13 +59,13 @@ Guide for list of commands:
 npx directus-x --help
 ```
 
-Example to create a migration for the public role
+Example to create a migration for the public role e related permissions
 
 ```
 npx directus-x migrate --role public
 ```
 
-Example to create a migration for a specific role (XXX)
+Example to create a migration for a specific role XXX -> uuid key (example: dc7be20f-7b81-431e-8db2-3ffbbf4f9174)
 
 ```
 npx directus-x migrate -r XXX
