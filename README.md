@@ -59,25 +59,25 @@ Guide for list of commands:
 npx directus-x --help
 ```
 
-Example to create a migration for the public role e related permissions
+Example to create a migration for the **public role** and **related permissions**
 
 ```
 npx directus-x migrate --role public
 ```
 
-Example to create a migration for a specific role XXX -> uuid key (example: dc7be20f-7b81-431e-8db2-3ffbbf4f9174)
+Example to create a migration for a **specific role** `XXX` -> _uuid key_ (example: `dc7be20f-7b81-431e-8db2-3ffbbf4f9174`)
 
 ```
-npx directus-x migrate -r XXX
+npx directus-x migrate -r dc7be20f-7b81-431e-8db2-3ffbbf4f9174
 ```
 
-Example to create a migration for translations strings
+Example to create a migration for **translations strings**
 
 ```
 npx directus-x migrate --translations
 ```
 
-Example to update WYSIWYG options for all project fields
+Example to update WYSIWYG options for all project fields using **batch** command
 
 ```
 npx directus-x batch fields-options -k "interface = 'input-rich-text-html'" -d '{"toolbar": ["bold", "bullist", "italic", "numlist", "underline"]}'
