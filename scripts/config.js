@@ -1,3 +1,6 @@
+const path = require('path')
+const cwd = process.cwd()
+
 const config = {
   db: {
     client: process.env.DB_CLIENT,
@@ -13,6 +16,9 @@ const config = {
   options: {
     module: false,
   },
+  migrationPath: process.env.MIGRATIONS_PATH
+    ? path.join(cwd, process.env.MIGRATIONS_PATH)
+    : path.join(cwd, '/migrations/'),
 }
 
 try {
