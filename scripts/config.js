@@ -20,7 +20,7 @@ const config = {
 }
 
 try {
-  const customConfig = require(`${process.cwd()}/directus-utils.js`)
+  const customConfig = require(`${cwd}/directus-utils.js`)
   config.db.client = customConfig?.db?.client || config.db.client
   config.db.connection = customConfig?.db?.connection || config.db.connection
   config.options.module = customConfig?.options?.module
