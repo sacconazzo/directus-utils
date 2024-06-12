@@ -32,9 +32,9 @@ module.exports = async role => {
 
     const permissionContent = await knex('directus_permissions').select().where({ role })
     permissionContent.forEach(p => {
-      p.permissions = JSON.parse(p.permissions)
-      p.validation = JSON.parse(p.validation)
-      p.presets = JSON.parse(p.presets)
+      if (typeof p.permissions !== 'object') p.permissions = JSON.parse(p.permissions)
+      if (typeof p.validation !== 'object') p.validation = JSON.parse(p.validation)
+      if (typeof p.presets !== 'object') p.presets = JSON.parse(p.presets)
     })
 
     const tamplatePContent = fs.readFileSync(
