@@ -1,10 +1,9 @@
 const fs = require('fs')
 const root = require('find-root')()
-const cwd = process.cwd()
 const Knex = require('knex')
 const { getMigrationKey } = require('./index')
 
-const { db: dbConfig, options } = require('../config')
+const { db: dbConfig, options, migrationPath } = require('../config')
 
 module.exports = async role => {
   let knex
@@ -25,7 +24,7 @@ module.exports = async role => {
       const migrationContent = tamplateContent.replaceAll('$$$$', role).replace('%%%%', JSON.stringify(roleContent))
 
       const migrationName = `${getMigrationKey()}-role-update.js`
-      fs.writeFileSync(`${cwd}/extensions/migrations/${migrationName}`, migrationContent)
+      fs.writeFileSync(`${migrationPath}/${migrationName}`, migrationContent)
 
       console.log(`Creata migration per ruolo ${role}: ${migrationName}`)
     }
@@ -45,7 +44,7 @@ module.exports = async role => {
     const migrationPContent = tamplatePContent.replace('$$$$', role).replace('%%%%', JSON.stringify(permissionContent))
 
     const migrationPName = `${getMigrationKey()}-permissions-update.js`
-    fs.writeFileSync(`${cwd}/extensions/migrations/${migrationPName}`, migrationPContent)
+    fs.writeFileSync(`${migrationPath}/${migrationPName}`, migrationPContent)
 
     console.log(`Creata migration per permissions: ${migrationPName}`)
   } catch (err) {

@@ -1,10 +1,9 @@
 const fs = require('fs')
 const root = require('find-root')()
-const cwd = process.cwd()
 const Knex = require('knex')
 const { getMigrationKey } = require('./index')
 
-const { db: dbConfig, options } = require('../config')
+const { db: dbConfig, options, migrationPath } = require('../config')
 
 module.exports = async () => {
   let knex
@@ -23,7 +22,7 @@ module.exports = async () => {
       .replace('%%%%', settingsContent.default_language || '')
 
     const migrationName = `${getMigrationKey()}-settings-translations-update.js`
-    fs.writeFileSync(`${cwd}/extensions/migrations/${migrationName}`, migrationContent)
+    fs.writeFileSync(`${migrationPath}/${migrationName}`, migrationContent)
 
     console.log(`Creata migration per translations: ${migrationName}`)
   } catch (err) {
