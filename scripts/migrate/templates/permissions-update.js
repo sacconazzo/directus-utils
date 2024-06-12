@@ -1,5 +1,5 @@
 const permissions = JSON.parse('%%%%')
-permissions.forEach((p) => {
+permissions.forEach(p => {
   p.permissions = p.permissions ? JSON.stringify(p.permissions) : null
   p.validation = p.validation ? JSON.stringify(p.validation) : null
   p.presets = p.presets ? JSON.stringify(p.presets) : null
@@ -7,7 +7,7 @@ permissions.forEach((p) => {
 })
 
 module.exports = {
-  async up(knex) {
+  up: async knex => {
     const role = '$$$$'
     await knex('directus_permissions')
       .delete()
@@ -15,7 +15,7 @@ module.exports = {
     return permissions.length ? knex('directus_permissions').insert(permissions) : true
   },
 
-  async down(knex) {
+  down: async knex => {
     return true
   },
 }
