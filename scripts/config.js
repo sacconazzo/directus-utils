@@ -16,9 +16,7 @@ const config = {
   options: {
     module: false,
   },
-  migrationPath: process.env.MIGRATIONS_PATH
-    ? path.join(cwd, process.env.MIGRATIONS_PATH)
-    : path.join(cwd, '/migrations/'),
+  migrationPath: path.join(cwd, process.env.MIGRATIONS_PATH || '/migrations/'),
 }
 
 try {
