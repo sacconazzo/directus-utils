@@ -6,6 +6,8 @@ const { getMigrationKey } = require('./index')
 const { db: dbConfig, options, migrationPath } = require('../config')
 
 module.exports = async () => {
+  console.warn('\nDEPRECATED on new directus versions. Please use snapshot\n')
+
   let knex
   try {
     knex = Knex(dbConfig)
