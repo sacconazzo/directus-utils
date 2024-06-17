@@ -15,7 +15,5 @@ module.exports = {
     return permissions.length ? knex('directus_permissions').insert(permissions) : true
   },
 
-  down: async knex => {
-    return true
-  },
+  down: knex => true,
 }
