@@ -14,6 +14,7 @@ program
   .description('Create migration for a specific entity (upsert mode)')
   .option('-r, --role <uuid>|public', 'migrate a role (with all related permissions)')
   .option('-t, --translations', 'migrate translation keys')
+  .option('-s, --settings', 'migrate settings')
   .action(migrate)
 
 program
