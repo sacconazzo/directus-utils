@@ -48,7 +48,7 @@ module.exports = async role => {
 
     console.log(`Creata migration per permissions: ${migrationPName}`)
   } catch (err) {
-    console.error(err.message)
+    console.error(err)
   } finally {
     knex && knex.client.pool.destroy()
   }

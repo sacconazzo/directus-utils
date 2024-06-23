@@ -6,6 +6,8 @@ Utilities scripts for Directus projects:
   - roles
   - permissions
   - translations
+  - settings
+  - files table
 - Batch updates (set common values on Directus tables)
 
 ## Prerequisites
