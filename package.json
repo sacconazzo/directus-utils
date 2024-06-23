@@ -1,6 +1,6 @@
 {
   "name": "directus-x",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "repository": "https://github.com/sacconazzo/directus-utils.git",
   "bin": "scripts/index.js",
   "main": "scripts/index.js",

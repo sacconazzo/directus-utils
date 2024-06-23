@@ -24,7 +24,7 @@ module.exports = async () => {
 
     console.log(`Creata migration per translations: ${migrationName}`)
   } catch (err) {
-    console.error(err)
+    console.error(err.message || err.code || err)
   } finally {
     knex && knex.client.pool.destroy()
   }
