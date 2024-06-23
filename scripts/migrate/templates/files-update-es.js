@@ -1,5 +1,10 @@
 const files = JSON.parse('%%%%')
 
+files.forEach(f => {
+  delete f.modified_by
+  delete f.uploaded_by
+})
+
 export default {
   async up(knex) {
     const existingIds = new Set(await knex('directus_files').pluck('id'))
