@@ -25,7 +25,7 @@ module.exports = async () => {
     console.log(`Creata migration per files: ${migrationName}`)
     console.warn(`\n>>> Remember to also migrate the original binary bucket content <<<\n`)
   } catch (err) {
-    console.error(err)
+    console.error(err.message || err.code || err)
   } finally {
     knex && knex.client.pool.destroy()
   }
