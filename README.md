@@ -1,11 +1,11 @@
 # Directus utilities CLI
 
-Utilities scripts for Directus projects:
+Utilities scripts for Directus 11 (or latest) projects:
 
 - Automatic migrations (reading from your db and creating a migration for deployment)
-  - roles
-  - permissions
-  - translations
+  - **policies** (with permission rules)
+  - **roles** (with associated policy relationship attributes - policy migration needed first)
+  - **translations** (transations table)
 - Batch updates (set common values on Directus tables)
 
 ## Prerequisites
@@ -23,6 +23,10 @@ Ref: https://github.com/directus/directus
 Guide for list of commands:
 
     npx directus-x --help
+
+Example to create a migration for a specific policy (AAA)
+
+    npx directus-x migrate --policy AAA
 
 Example to create a migration for the public role
 

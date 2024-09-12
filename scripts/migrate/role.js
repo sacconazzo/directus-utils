@@ -4,7 +4,7 @@ const cwd = process.cwd()
 const Knex = require('knex')
 const { getMigrationKey } = require('./index')
 
-const { db: dbConfig } = require('../config')
+const { db: dbConfig, migrationPath } = require('../config')
 
 module.exports = async (role) => {
   let knex
@@ -15,33 +15,28 @@ module.exports = async (role) => {
       role = null
     } else {
       const [roleContent] = await knex('directus_roles').select().where({ id: role })
-      if (!roleContent) throw new Error('Ruolo non valido')
+      if (!roleContent) throw new Error('Role not valid')
 
       const tamplateContent = fs.readFileSync(`${root}/scripts/migrate/templates/role-update.js`, 'utf8')
 
       const migrationContent = tamplateContent.replaceAll('$$$$', role).replace('%%%%', JSON.stringify(roleContent))
 
       const migrationName = `${getMigrationKey()}-role-update.js`
-      fs.writeFileSync(`${cwd}/extensions/migrations/${migrationName}`, migrationContent)
+      fs.writeFileSync(`${cwd}/${migrationPath}/${migrationName}`, migrationContent)
 
-      console.log(`Creata migration per ruolo ${role}: ${migrationName}`)
+      console.log(`Migration created for role ${role}: ${migrationName}`)
     }
 
-    const permissionContent = await knex('directus_permissions').select().where({ role })
-    permissionContent.forEach((p) => {
-      p.permissions = JSON.parse(p.permissions)
-      p.validation = JSON.parse(p.validation)
-      p.presets = JSON.parse(p.presets)
-    })
+    const accessContent = await knex('directus_access').select().where({ role })
 
-    const tamplatePContent = fs.readFileSync(`${root}/scripts/migrate/templates/permissions-update.js`, 'utf8')
+    const tamplateAContent = fs.readFileSync(`${root}/scripts/migrate/templates/access-update.js`, 'utf8')
 
-    const migrationPContent = tamplatePContent.replace('$$$$', role).replace('%%%%', JSON.stringify(permissionContent))
+    const migrationAContent = tamplateAContent.replace('$$$$', role).replace('%%%%', JSON.stringify(accessContent))
 
-    const migrationPName = `${getMigrationKey()}-permissions-update.js`
-    fs.writeFileSync(`${cwd}/extensions/migrations/${migrationPName}`, migrationPContent)
+    const migrationAName = `${getMigrationKey()}-access-update.js`
+    fs.writeFileSync(`${cwd}/${migrationPath}/${migrationAName}`, migrationAContent)
 
-    console.log(`Creata migration per permissions: ${migrationPName}`)
+    console.log(`Migration created for permissions: ${migrationAName}`)
   } catch (err) {
     console.error(err.message)
   } finally {

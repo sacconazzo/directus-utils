@@ -1,4 +1,5 @@
 module.exports = {
+  migrationPath: process.env.MIGRATIONS_PATH || './extensions/migrations',
   db: {
     client: process.env.DB_CLIENT,
     useNullAsDefault: true,

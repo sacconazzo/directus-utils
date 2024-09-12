@@ -8,10 +8,8 @@ permissions.forEach((p) => {
 
 module.exports = {
   async up(knex) {
-    const role = '$$$$'
-    await knex('directus_permissions')
-      .delete()
-      .where('role', role !== 'null' ? role : null)
+    const policy = '$$$$'
+    await knex('directus_permissions').delete().where('policy', policy)
     return permissions.length ? knex('directus_permissions').insert(permissions) : true
   },
 

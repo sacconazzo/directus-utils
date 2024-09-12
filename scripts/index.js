@@ -12,7 +12,8 @@ program.name('string-util').description('Directus utilities').version('1.0.0')
 program
   .command('migrate')
   .description('Create migration for a specific entity (upsert mode)')
-  .option('-r, --role <uuid>|public', 'migrate a role (with all related permissions)')
+  .option('-p, --policy <uuid>', 'migrate a policy (including permissions)')
+  .option('-r, --role <uuid>|public', 'migrate a role (including associated policy relationship attributes)')
   .option('-t, --translations', 'migrate translation keys')
   .action(migrate)
 
@@ -23,7 +24,7 @@ program
   .option('-k, --key <condition>|all', 'Where condition of updating (ex.: "interface=\'input-rich-text-html\'")')
   .option(
     '-d, --data <data>',
-    'Field content to be filled in batch (ex.: \'{"folder": null, "toolbar": ["blockquote", "bold", "bullist", "customImage", "fullscreen", "h1", "h2", "h3", "italic", "numlist", "underline"]}\')'
+    'Field content to be filled in batch (ex.: \'{"folder": null, "toolbar": ["blockquote", "bold", "bullist", "customImage", "fullscreen", "h1", "h2", "h3", "italic", "numlist", "underline"]}\')',
   )
   .action(batch)
 
