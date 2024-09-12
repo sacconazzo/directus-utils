@@ -31,7 +31,10 @@ module.exports = async role => {
 
     const accessContent = await knex('directus_access').select().where({ role })
 
-    const tamplateAContent = fs.readFileSync(`${root}/scripts/migrate/templates/access-update.js`, 'utf8')
+    const tamplateAContent = fs.readFileSync(
+      `${root}/scripts/migrate/templates/access-update${options.module ? '-es' : ''}.js`,
+      'utf8',
+    )
 
     const migrationAContent = tamplateAContent.replace('$$$$', role).replace('%%%%', JSON.stringify(accessContent))
 
