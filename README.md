@@ -3,16 +3,11 @@
 Utilities scripts for Directus 11 (or latest) projects:
 
 - Automatic migrations (reading from your db and creating a migration for deployment)
-  <<<<<<< HEAD
   - **policies** (with permission rules)
   - **roles** (with associated policy relationship attributes - policy migration needed first)
-  - # **translations** (transations table)
-  - roles
-  - permissions
-  - translations
-  - settings
-  - files table
-    > > > > > > > main
+  - **translations** (transations table)
+  - **settings**
+  - **files table**
 - Batch updates (set common values on Directus tables)
 
 ## Prerequisites
