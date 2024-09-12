@@ -17,13 +17,13 @@
     "commands",
     "cli"
   ],
-  "author": "sacconazzo",
-  "license": "ISC",
+  "author": "Giona Righini (giona.tech)",
+  "license": "MIT",
   "dependencies": {
-    "commander": "^9.4.1",
-    "dotenv": "^16.0.3",
+    "commander": "^9.5.0",
+    "dotenv": "^16.4.5",
     "find-root": "^1.1.0",
-    "knex": "^2.3.0"
+    "knex": "^2.5.1"
   },
   "devDependencies": {
     "mysql": "^2.18.1",

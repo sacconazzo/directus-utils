@@ -10,19 +10,20 @@ module.exports = async () => {
   try {
     knex = Knex(dbConfig)
 
-    const translationsContent = await knex('directus_translations').select()
+    const filesContent = await knex('directus_files').select()
 
     const tamplateContent = fs.readFileSync(
-      `${root}/scripts/migrate/templates/translations-update${options.module ? '-es' : ''}.js`,
+      `${root}/scripts/migrate/templates/files-update${options.module ? '-es' : ''}.js`,
       'utf8',
     )
 
-    const migrationContent = tamplateContent.replace('%%%%', JSON.stringify(translationsContent))
+    const migrationContent = tamplateContent.replace('%%%%', JSON.stringify(filesContent))
 
-    const migrationName = `${getMigrationKey()}-settings-translations-update.js`
+    const migrationName = `${getMigrationKey()}-files-update.js`
     fs.writeFileSync(`${migrationPath}/${migrationName}`, migrationContent)
 
-    console.log(`Migration created for translations: ${migrationName}`)
+    console.log(`Creata migration per files: ${migrationName}`)
+    console.warn(`\n>>> Remember to also migrate the original binary bucket content <<<\n`)
   } catch (err) {
     console.error(err.message || err.code || err)
   } finally {

@@ -1,5 +1,7 @@
-module.exports = {
-  migrationPath: process.env.MIGRATIONS_PATH || './extensions/migrations',
+const path = require('path')
+const cwd = process.cwd()
+
+const config = {
   db: {
     client: process.env.DB_CLIENT,
     useNullAsDefault: true,
@@ -11,4 +13,17 @@ module.exports = {
       port: Number(process.env.DB_PORT),
     },
   },
+  options: {
+    module: false,
+  },
+  migrationPath: path.join(cwd, process.env.MIGRATIONS_PATH || '/migrations/'),
 }
+
+try {
+  const customConfig = require(`${cwd}/directus-utils.js`)
+  config.db.client = customConfig?.db?.client || config.db.client
+  config.db.connection = customConfig?.db?.connection || config.db.connection
+  config.options.module = customConfig?.options?.module
+} catch {}
+
+module.exports = config

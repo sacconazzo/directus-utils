@@ -10,19 +10,19 @@ module.exports = async () => {
   try {
     knex = Knex(dbConfig)
 
-    const translationsContent = await knex('directus_translations').select()
+    const [settingsContent] = await knex('directus_settings').select().where({ id: 1 })
 
     const tamplateContent = fs.readFileSync(
-      `${root}/scripts/migrate/templates/translations-update${options.module ? '-es' : ''}.js`,
+      `${root}/scripts/migrate/templates/settings-update${options.module ? '-es' : ''}.js`,
       'utf8',
     )
 
-    const migrationContent = tamplateContent.replace('%%%%', JSON.stringify(translationsContent))
+    const migrationContent = tamplateContent.replace('%%%%', JSON.stringify(settingsContent))
 
-    const migrationName = `${getMigrationKey()}-settings-translations-update.js`
+    const migrationName = `${getMigrationKey()}-settings-update.js`
     fs.writeFileSync(`${migrationPath}/${migrationName}`, migrationContent)
 
-    console.log(`Migration created for translations: ${migrationName}`)
+    console.log(`Creata migration per settings: ${migrationName}`)
   } catch (err) {
     console.error(err.message || err.code || err)
   } finally {
