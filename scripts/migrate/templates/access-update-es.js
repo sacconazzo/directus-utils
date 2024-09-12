@@ -4,7 +4,7 @@ access.forEach(p => {
 })
 
 module.exports = {
-  up: async knex => {
+  async up(knex) {
     const role = '$$$$'
     await knex('directus_access')
       .delete()
@@ -12,5 +12,7 @@ module.exports = {
     return access.length ? knex('directus_access').insert(access) : true
   },
 
-  down: knex => true,
+  async down(knex) {
+    return true
+  },
 }
