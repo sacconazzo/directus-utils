@@ -6,5 +6,5 @@ module.exports = {
     return translations.length ? knex('directus_translations').insert(translations) : true
   },
 
-  down: knex => true,
+  down: async knex => true,
 }

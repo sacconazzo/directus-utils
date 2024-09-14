@@ -7,12 +7,13 @@ const program = new Command()
 const { migrate } = require('./migrate')
 const { batch } = require('./batch')
 
-program.name('string-util').description('Directus utilities').version('1.2.0')
+program.name('string-util').description('Directus utilities').version('2.0.0')
 
 program
   .command('migrate')
   .description('Create migration for a specific entity (upsert mode)')
-  .option('-r, --role <uuid>|public', 'migrate a role (with all related permissions)')
+  .option('-p, --policy <uuid>', 'migrate a policy (including permissions)')
+  .option('-r, --role <uuid>|public', 'migrate a role (including associated policy relationship attributes)')
   .option('-t, --translations', 'migrate translation keys')
   .option('-f, --files', 'migrate files table')
   .option('-s, --settings', 'migrate settings')

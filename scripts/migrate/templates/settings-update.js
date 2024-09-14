@@ -9,5 +9,5 @@ module.exports = {
       : await knex('directus_settings').insert(settings)
   },
 
-  down: knex => true,
+  down: async knex => true,
 }

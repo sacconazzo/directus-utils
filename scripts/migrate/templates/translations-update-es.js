@@ -6,7 +6,7 @@ export default {
     return translations.length ? knex('directus_translations').insert(translations) : true
   },
 
-  down(knex) {
+  async down(knex) {
     return true
   },
 }
