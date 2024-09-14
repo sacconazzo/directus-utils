@@ -1,6 +1,8 @@
+import uuid from 'uuid'
+
 const access = JSON.parse('%%%%')
 access.forEach(p => {
-  delete p.id
+  p.id = uuid.v4()
 })
 
 module.exports = {
