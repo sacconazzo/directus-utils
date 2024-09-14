@@ -1,6 +1,6 @@
 {
   "name": "directus-x",
-  "version": "1.5.5",
+  "version": "2.0.0",
   "repository": "https://github.com/sacconazzo/directus-utils.git",
   "bin": "scripts/index.js",
   "main": "scripts/index.js",
@@ -26,6 +26,7 @@
     "knex": "^2.5.1"
   },
   "devDependencies": {
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "prettier": "^3.3.3"
   }
 }

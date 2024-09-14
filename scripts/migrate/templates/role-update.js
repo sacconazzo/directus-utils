@@ -6,5 +6,5 @@ module.exports = {
     return setRole ? knex('directus_roles').update(role).where('id', '$$$$') : knex('directus_roles').insert(role)
   },
 
-  down: knex => true,
+  down: async knex => true,
 }

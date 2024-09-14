@@ -19,10 +19,10 @@ module.exports = async () => {
 
     const migrationContent = tamplateContent.replace('%%%%', JSON.stringify(translationsContent))
 
-    const migrationName = `${getMigrationKey()}-translations-update.js`
+    const migrationName = `${getMigrationKey()}-settings-translations-update.js`
     fs.writeFileSync(`${migrationPath}/${migrationName}`, migrationContent)
 
-    console.log(`Creata migration per translations: ${migrationName}`)
+    console.log(`Migration created for translations: ${migrationName}`)
   } catch (err) {
     console.error(err.message || err.code || err)
   } finally {

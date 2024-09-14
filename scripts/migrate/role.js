@@ -14,7 +14,7 @@ module.exports = async role => {
       role = null
     } else {
       const [roleContent] = await knex('directus_roles').select().where({ id: role })
-      if (!roleContent) throw new Error('Ruolo non valido')
+      if (!roleContent) throw new Error('Role not valid')
 
       const tamplateContent = fs.readFileSync(
         `${root}/scripts/migrate/templates/role-update${options.module ? '-es' : ''}.js`,
@@ -26,27 +26,22 @@ module.exports = async role => {
       const migrationName = `${getMigrationKey()}-role-update.js`
       fs.writeFileSync(`${migrationPath}/${migrationName}`, migrationContent)
 
-      console.log(`Creata migration per ruolo ${role}: ${migrationName}`)
+      console.log(`Migration created for role ${role}: ${migrationName}`)
     }
 
-    const permissionContent = await knex('directus_permissions').select().where({ role })
-    permissionContent.forEach(p => {
-      if (typeof p.permissions !== 'object') p.permissions = JSON.parse(p.permissions)
-      if (typeof p.validation !== 'object') p.validation = JSON.parse(p.validation)
-      if (typeof p.presets !== 'object') p.presets = JSON.parse(p.presets)
-    })
+    const accessContent = await knex('directus_access').select().where({ role })
 
-    const tamplatePContent = fs.readFileSync(
-      `${root}/scripts/migrate/templates/permissions-update${options.module ? '-es' : ''}.js`,
+    const tamplateAContent = fs.readFileSync(
+      `${root}/scripts/migrate/templates/access-update${options.module ? '-es' : ''}.js`,
       'utf8',
     )
 
-    const migrationPContent = tamplatePContent.replace('$$$$', role).replace('%%%%', JSON.stringify(permissionContent))
+    const migrationAContent = tamplateAContent.replace('$$$$', role).replace('%%%%', JSON.stringify(accessContent))
 
-    const migrationPName = `${getMigrationKey()}-permissions-update.js`
-    fs.writeFileSync(`${migrationPath}/${migrationPName}`, migrationPContent)
+    const migrationAName = `${getMigrationKey()}-access-update.js`
+    fs.writeFileSync(`${migrationPath}/${migrationAName}`, migrationAContent)
 
-    console.log(`Creata migration per permissions: ${migrationPName}`)
+    console.log(`Migration created for permissions: ${migrationAName}`)
   } catch (err) {
     console.error(err.message || err.code || err)
   } finally {

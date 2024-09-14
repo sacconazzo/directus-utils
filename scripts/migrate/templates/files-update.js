@@ -18,5 +18,5 @@ module.exports = {
     }
   },
 
-  down: knex => true,
+  down: async knex => true,
 }

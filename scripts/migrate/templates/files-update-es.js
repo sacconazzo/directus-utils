@@ -18,7 +18,7 @@ export default {
     }
   },
 
-  down(knex) {
+  async down(knex) {
     return true
   },
 }

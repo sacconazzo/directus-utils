@@ -9,7 +9,7 @@ export default {
       : await knex('directus_settings').insert(settings)
   },
 
-  down(knex) {
+  async down(knex) {
     return true
   },
 }
