@@ -15,7 +15,7 @@ export default {
     return permissions.length ? knex('directus_permissions').insert(permissions) : true
   },
 
-  down(knex) {
+  async down(knex) {
     return true
   },
 }

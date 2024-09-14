@@ -12,5 +12,5 @@ module.exports = {
     return access.length ? knex('directus_access').insert(access) : true
   },
 
-  down: knex => true,
+  down: async knex => true,
 }

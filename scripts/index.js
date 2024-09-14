@@ -7,7 +7,7 @@ const program = new Command()
 const { migrate } = require('./migrate')
 const { batch } = require('./batch')
 
-program.name('string-util').description('Directus utilities').version('1.2.0')
+program.name('string-util').description('Directus utilities').version('2.0.0')
 
 program
   .command('migrate')

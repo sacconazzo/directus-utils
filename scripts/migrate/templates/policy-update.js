@@ -8,5 +8,5 @@ module.exports = {
       : knex('directus_policies').insert(policies)
   },
 
-  down: knex => true,
+  down: async knex => true,
 }
